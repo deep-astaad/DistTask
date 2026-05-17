@@ -459,19 +459,6 @@ This project is focused on learning:
 
 ---
 
-# Non-Goals
-
-The following are intentionally out of scope:
-
-- Exactly-once delivery guarantees
-- Distributed consensus
-- Multi-region replication
-- Full Celery compatibility
-- Workflow DAG engine
-- Distributed transactions
-
----
-
 # Key Engineering Concepts Demonstrated
 
 - Distributed systems
@@ -486,13 +473,3 @@ The following are intentionally out of scope:
 - At-least-once delivery
 
 ---
-
-# Example Resume Description
-
-Built a distributed Python task queue framework inspired by Celery supporting asynchronous task scheduling, retries with exponential backoff, Redis-backed queues, worker heartbeats, and real-time monitoring APIs.
-
----
-
-# License
-
-MIT License
