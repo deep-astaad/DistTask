@@ -3,23 +3,27 @@ services:
   worker:
     build: .
     container_name: disttask_worker
-    command: python -m app.worker.runner
+    command: watchfiles "python -m app.worker.runner" app
     depends_on:
       - redis
       - postgres
     env_file:
       - .env
+    volumes:
+      - .:/app
     networks:
       - disttask_network
 
   producer:
     build: .
-    command: python -m app.queue.producer
+    command: watchfiles "python -m app.queue.producer" app
     depends_on:
       - redis
       - postgres
     env_file:
       - .env
+    volumes:
+      - .:/app
     networks:
       - disttask_network
 
