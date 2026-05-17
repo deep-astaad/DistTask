@@ -1,10 +1,31 @@
 services:
 
+  worker:
+    build: .
+    container_name: disttask_worker
+    command: python -m app.worker.runner
+    depends_on:
+      - redis
+      - postgres
+    env_file:
+      - .env
+    networks:
+      - disttask_network
+
+  producer:
+    build: .
+    command: python -m app.queue.producer
+    depends_on:
+      - redis
+      - postgres
+    env_file:
+      - .env
+    networks:
+      - disttask_network
+
   redis:
     image: redis:7-alpine
     container_name: disttask_redis
-    ports:
-      - "6379:6379"
     volumes:
       - redis_data:/data
     networks:
@@ -19,8 +40,6 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
