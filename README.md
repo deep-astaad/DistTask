@@ -179,7 +179,7 @@ DistTask/
 # Installation
 
 ```bash
-git clone https://github.com/yourusername/DistTask.git
+git clone https://github.com/deep-astaad/DistTask.git
 
 cd DistTask
 
