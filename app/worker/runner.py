@@ -10,9 +10,12 @@ QUEUE_NAME = "default"
 
 
 async def worker_loop():
-    print("worker started")
+    print("worker booting...")
+    print("registered tasks:", TASK_REGISTRY)
 
     while True:
+        print("waiting for task...")
+
         job = await broker.consume(QUEUE_NAME)
 
         print("received", job)
