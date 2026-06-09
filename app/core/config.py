@@ -28,7 +28,7 @@ class Settings(BaseSettings):
     @property
     def postgres_url(self):
         return (
-            f"postgresql+asyncpg://"
+            f"postgresql+psycopg://"
             f"{self.postgres_user}:"
             f"{self.postgres_password}@"
             f"{self.postgres_host}:"

@@ -4,9 +4,7 @@ from app.tasks.registry import task
 
 
 @task("debug.sleep")
-async def debug_sleep(payload):
-    seconds = payload.get("seconds", 1)
-
+async def debug_sleep(seconds: int = 1):
     await asyncio.sleep(seconds)
 
     return {
